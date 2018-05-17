@@ -1,0 +1,21 @@
+apiVersion: gitkube.sh/v1alpha1
+kind: Remote
+metadata:
+  name: sa-logic
+  namespace: default
+spec:
+  ## uncomment to add a registry
+  registry:
+     url: "docker.io/nivedhan"
+     credentials:
+       secretRef: regcred
+  deployments:
+  - name: sa-logic 
+    containers: 
+    - name: sa-logic
+      path: .
+      dockerfile: Dockerfile
+  authorizedKeys:
+  - "ssh-rsa <key>"
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOHReJvahWuJNdSq2W4n4rDMRpgXUxaGxm1AW+4PSOzs+RiLw6zk+Y6uxiKnbA8gNQkYgnt36FWDveuLHc7GBLkclgFCiNrhJOw+wQ+o0SbFCYZzyxY1ec5UEz5wINWoZlVTr2zp+CQ5Qz2Q/wq6/h+xYTh+X/3NRQfXpL0DLLGJfKz3f0bAK/ZptajyVoeYRWecwKWbsjV41tMEI8a5LOxfBDfneeEtHa1Ara5kCyfhLBY0+6Le1E2kPD/NFQTSlGlk8xGVe8UlEQzoJExgblbjBeDIeJ21+r5krhy1mVgpyYdTBOrqfUA3iwAZPPXr94HOja1eBalj3smd+DYiK/ nivedhanm@FDLMC1105.local
+
